@@ -45,9 +45,9 @@ const GameScreen = ({ selectedNumber }) => {
     const currentHigh = useRef(100);
 
     const onHandleNextGuess = (direction) => {
-
+        if (direction === 'lower' && currentGuess < selectedNumber) || 
     }
- 
+
     useEffect(() => {
         if(currentGUess === selectedNumber) {
             onGameOver(rounds);
