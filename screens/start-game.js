@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 })
 
 
-const StartGameScreen = () => {
+const StartGameScreen = ({onStartGame}) => {
     const [number, setNumber] = useState('');
     const [confirmed, setConfirmed] = useState(false);
     const [selectedNumber, setSelectedNumber] = useState(0);
@@ -82,13 +82,17 @@ const StartGameScreen = () => {
         setSelectedNumber(chosenNumber);
         setNumber('');
     };
+
+    onHandleStartGame = () => {
+        onStartGame(selectedNumber);
+    };
     const confirmedOutput = () => confirmed && (
         <Card style={style.summaryContainer}>
             <Text style={style.summaryText}></Text>
             <NumberContainer style={style.numberSelected}>{selectedNumber}</NumberContainer>
             <Button
                 title="Start Game"
-                onPress={() => null}
+                onPress={onHandleStartGame}
                 color={color.primary}
             />
         </Card>
